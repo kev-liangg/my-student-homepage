@@ -1,29 +1,116 @@
 <!DOCTYPE html>
 <html>
+<body onresize="updateSize()">
 <head>
     	<title>frontend is hard</title>
 <style>
+body {margin: 0;}
 /* nav bar formatting */
 ul
 {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 li
 {
-  display: inline;
+  float: left;
+  border-right: 1px solid #bbb;
+}
+li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.active)
+{
+  background-color: #111;
+}
+.active
+{
+  background-color: #4CAF50;
+}
+
+/* background color sections */
+.bgDiv
+{
+  margin-top: 0;
+  padding: 0;
+}
+body
+{
+  height: 300vh;
+}
+header
+{
+  margin-top: -45px;
+  padding-top: 70px;
+  background-color: #F5A392;
+  min-height: 40%;
+}
+main
+{
+  margin-top: -45px;
+  padding-top: 45px;
+  background-color: #F0DE9E;
+  min-height: 40%;
+}
+footer
+{
+  margin-top: -45px;
+  padding-top: 45px;
+  background-color: #9EBEF0;
+  min-height: 40%;
+}
+main h2
+{
+  margin: 0;
+}
+footer p
+{
+  margin: 0;
 }
 </style>
 </head>
+
 <body>
 <!-- nav bar elements -->
-<ul>
-  <li><a href="#home">Home</a></li>
-  <li><a href="#contact">Contact</a></li>
+<ul id="navBar">
+  <li><a class="nav active" href="#home">Home</a></li>
+  <li><a class="nav" href="#contact">Contact</a></li>
+  <li><a class="nav"href="#references">Site References</a></li>
 </ul>
-  <h1>please be patient, kevin literally just started html</h1>
+
+
+<header id="home">
+  <h1>please be patient, kevin literally just started html</h1>   
+</header>
+<main id="contact">
   <h2>also he's literally learning vim at the same time</h2>
+</main>
+<footer id="references">
   <p>send help</p>
+</footer>
+<!-- script to determine window height -->
+<script>
+var navBar = document.getElementById("navBar");
+var navs = navBar.getElementsByClassName("nav");
+for (var i = 0; i < navs.length; i++)
+{
+  navs[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 </body>
 </html>
